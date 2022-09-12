@@ -47,12 +47,11 @@ scene.add(torus)
 const pointLight = new THREE.PointLight(0xffffff)
 
 // Position light &&& add to the scene
-pointLight.position.set(5,5,5)
+pointLight.position.set(15,15,15)
 
 // Ambient light will light up the entire scene -- like a floodlight in the room -- ADD TO SCENE
-const ambientLight = new THREE.AmbientLight(0xffffff);
 
-scene.add( pointLight, ambientLight )
+scene.add( pointLight )
 
 // Shows the position of the point light because they are confusing
 const lightHelper = new THREE.PointLightHelper(pointLight)
