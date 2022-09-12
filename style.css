@@ -20,6 +20,48 @@ main {
 
 html{
   overflow-x: hidden;
+}
+
+.icon{
+  max-height: 220px;
+  background: white;
+  width: 100%;
+}
+
+figure:nth-child( odd ){
+  transform: translateY(10%);
+  filter: brightness(99%)
+}
+
+.figure:nth-child(even) {
+  transform: translateY(-6%)
+}
+
+figure:hover .caption{
+  opacity: 100%;
+  transition: all 350ms ease-in;
+}
+
+.caption{
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10px;
+  opacity: 0;
+}
+
+.skills{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+figure{
+  margin: 0;
+  padding: 8px;
+  width: calc(92% / 3);
+  cursor: pointer;
 
 }
 

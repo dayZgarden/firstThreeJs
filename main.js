@@ -53,7 +53,7 @@ scene.add(torus)
 const pointLight = new THREE.PointLight(0xffffff)
 
 // Position light &&& add to the scene
-pointLight.position.set(15,15,15)
+pointLight.position.set(17,17,17)
 
 // Ambient light will light up the entire scene -- like a floodlight in the room -- ADD TO SCENE
 
@@ -102,11 +102,78 @@ const cubeTexture = new THREE.TextureLoader().load('ghost.jpg');
 
 // Create a mesh of a box geometry and a 
 const whore = new THREE.Mesh(
-    new THREE.BoxGeometry(3,3,3),
+    new THREE.DodecahedronGeometry(3),
     new THREE.MeshBasicMaterial( {map : cubeTexture } )
 )
 
-scene.add(whore)
+scene.add(whore) 
+
+
+const wordTexture = new THREE.TextureLoader().load('Word.png')
+const powerbiTexture = new THREE.TextureLoader().load('power-bi.png')
+const pythonTexture = new THREE.TextureLoader().load('python.png')
+const powerpointTexture = new THREE.TextureLoader().load('powerpoint.png')
+const excelTexture = new THREE.TextureLoader().load('excel.png')
+const javaTexture = new THREE.TextureLoader().load('java.png')
+const cTexture = new THREE.TextureLoader().load('c.png')
+const matlabTexture = new THREE.TextureLoader().load('matlab.jpg')
+const ladderlogicTexture = new THREE.TextureLoader().load('ladderlogic.png')
+
+const word = new THREE.Mesh(
+    new THREE.BoxGeometry(2.5,2.5,2.5),
+    new THREE.MeshBasicMaterial( {map: wordTexture})
+)
+
+scene.add(word)
+
+const powerbi = new THREE.Mesh(
+    new THREE.BoxGeometry(2.5,2.5,2.5),
+    new THREE.MeshBasicMaterial( {map: powerbiTexture})
+)
+
+scene.add(powerbi)
+const python = new THREE.Mesh(
+    new THREE.BoxGeometry(2.5,2.5,2.5),
+    new THREE.MeshBasicMaterial( {map: pythonTexture})
+)
+
+scene.add(python)
+const powerpoint = new THREE.Mesh(
+    new THREE.BoxGeometry(2.5,2.5,2.5),
+    new THREE.MeshBasicMaterial( {map: powerpointTexture})
+)
+
+scene.add(powerpoint)
+const excel = new THREE.Mesh(
+    new THREE.BoxGeometry(2.5,2.5,2.5),
+    new THREE.MeshBasicMaterial( {map: excelTexture})
+)
+
+scene.add(excel)
+const java = new THREE.Mesh(
+    new THREE.BoxGeometry(2.5,2.5,2.5),
+    new THREE.MeshBasicMaterial( {map: javaTexture})
+)
+
+scene.add(java)
+const c = new THREE.Mesh(
+    new THREE.BoxGeometry(2.5,2.5,2.5),
+    new THREE.MeshBasicMaterial( {map: cTexture})
+)
+
+scene.add(c)
+const matlab = new THREE.Mesh(
+    new THREE.BoxGeometry(2.5,2.5,2.5),
+    new THREE.MeshBasicMaterial( {map: matlabTexture})
+)
+
+scene.add(matlab)
+const ladderlogic = new THREE.Mesh(
+    new THREE.BoxGeometry(2.5,2.5,2.5),
+    new THREE.MeshBasicMaterial( {map: ladderlogicTexture})
+)
+
+scene.add(ladderlogic)
 
 // Create a more interesting map with the moon
 const moonTexture = new THREE.TextureLoader().load('moon.jpg')
@@ -125,6 +192,33 @@ scene.add(moon)
 // Move the moon down because we are scrolling towards it
 moon.position.z = 10;
 moon.position.x = -10;
+
+word.position.y = 7;
+word.position.x = 17;
+
+powerbi.position.y = -12;
+powerbi.position.x = -17;
+
+python.position.y = 9;
+python.position.x = -17;
+
+powerpoint.position.y = -11;
+powerpoint.position.x = 17;
+
+excel.position.y = 18;
+excel.position.x =-28;
+
+java.position.y = -18;
+java.position.x = -28;
+
+c.position.y = 4;
+c.position.x = -36;
+
+matlab.position.y = -4;
+matlab.position.x = 36;
+
+ladderlogic.position.y = 20;
+ladderlogic.position.x = 0;
 
 whore.position.x=15;
 
@@ -167,6 +261,43 @@ function animate() {
 
     whore.rotation.y += 0.01;
     whore.rotation.z += 0.01;
+
+    word.rotation.y += 0.005;
+    word.rotation.z += 0.005;
+    word.rotation.x -= 0.001;
+
+    c.rotation.y += 0.005;
+    c.rotation.z += 0.005;
+    c.rotation.x -= 0.001;
+
+    matlab.rotation.y += 0.005;
+    matlab.rotation.z += 0.005;
+    matlab.rotation.x -= 0.001;
+
+    excel.rotation.y += 0.005;
+    excel.rotation.z += 0.005;
+    excel.rotation.x -= 0.001;
+
+    powerpoint.rotation.y += 0.005;
+    powerpoint.rotation.z += 0.005;
+    powerpoint.rotation.x -= 0.001;
+
+    powerbi.rotation.y += 0.005;
+    powerbi.rotation.z += 0.005;
+    powerbi.rotation.x -= 0.001;
+
+    ladderlogic.rotation.y += 0.005;
+    ladderlogic.rotation.z += 0.005;
+    ladderlogic.rotation.x -= 0.001;
+
+    java.rotation.y += 0.005;
+    java.rotation.z += 0.005;
+    java.rotation.x -= 0.001;
+
+    python.rotation.y += 0.005;
+    python.rotation.z += 0.005;
+    python.rotation.x -= 0.001;
+    
 
     // Keep updating the UI
     renderer.render( scene, camera )
