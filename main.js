@@ -34,7 +34,7 @@ const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 )
 
 // Needs a material, the wrapping paper for an object
 // in this case no light source is needed because it is a basic material
-const material = new THREE.MeshStandardMaterial( {color: 0x8001080} );
+const material = new THREE.MeshStandardMaterial( {color: 0xFF6347} );
 
 // Combine the geometry with the material
 const torus = new THREE.Mesh( geometry, material );
@@ -63,6 +63,11 @@ const gridHelper = new THREE.GridHelper(200 ,50)
 
 // Use math helpers to add a large amount of objects to the scene
 
+// Make the orbit controls class -- Pass it the camera and the renderer dom element
+const controls = new OrbitControls( camera, renderer.domElement );
+
+controls.update();
+
 // Create a function to add stars to the background of space
 function addStar() {
     const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -79,10 +84,7 @@ function addStar() {
 }
 
 // Generate an x amount of "addStar"
-Array(100).fill().forEach(addStar)
-
-// Make the orbit controls class -- Pass it the camera and the renderer dom element
-const controls = new OrbitControls( camera, renderer.domElement );
+Array(200).fill().forEach(addStar)
 
 // Load a space texture into the scene, can pass a callback function to notify when the scene is done loading
 const spaceTexture = new THREE.TextureLoader().load('space.jpg');
@@ -91,13 +93,15 @@ const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
 
 // Make a cube of this picture on every face
-const cubeTexture = new THREE.TextureLoader().load('whore.jpg');
+const cubeTexture = new THREE.TextureLoader().load('ghost.jpg');
 
 // Create a mesh of a box geometry and a 
 const whore = new THREE.Mesh(
     new THREE.BoxGeometry(3,3,3),
     new THREE.MeshBasicMaterial( {map : cubeTexture } )
 )
+
+scene.add(whore)
 
 // Create a more interesting map with the moon
 const moonTexture = new THREE.TextureLoader().load('moon.jpg')
@@ -107,15 +111,17 @@ const moon = new THREE.Mesh(
     new THREE.SphereGeometry(3, 32, 32),
     new THREE.MeshStandardMaterial( {
         map: moonTexture,
-        noramlMap: bumpyTexture
+        normalMap: bumpyTexture
     })
 );
 
 scene.add(moon)
 
 // Move the moon down because we are scrolling towards it
-moon.position.z = 16;
-moon.position.x= 8;
+moon.position.z = 10;
+moon.position.x = -10;
+
+whore.position.x=15;
 
 // move the camera
 function moveCamera() {
@@ -128,12 +134,11 @@ function moveCamera() {
     moon.rotation.y += 0.075;
     moon.rotation.z += 0.05;
 
-    whore.rotation.y += 0.01;
-    whore.rotation.z += 0.01;
+
 
     // move the camera -- the t value will always be negative because going down
     // so multiply by a negative number
-    camera.position.z = t * -0.01
+    camera.position.z = t * -0.01;
     camera.position.x = t * -0.0002;
     camera.position.y = t * -0.0002;
 }
@@ -142,7 +147,7 @@ function moveCamera() {
 document.body.onscroll = moveCamera
 
 // add it to the scene
-scene.add(whore)
+
 
 // setup a recursive function so your scene can keep calling,
 // like an animation
@@ -155,8 +160,8 @@ function animate() {
     torus.rotation.y += 0.005;
     torus.rotation.z += 0.01;
 
-    // Update the controls in the UI
-    controls.update();
+    whore.rotation.y += 0.01;
+    whore.rotation.z += 0.01;
 
     // Keep updating the UI
     renderer.render( scene, camera )

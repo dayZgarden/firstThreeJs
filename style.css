@@ -9,7 +9,7 @@ main {
   position: absolute;
   width: 100vw;
   color:white;
-  z-index: 00;
+  z-index: 99;
   width: 100%;
   margin: 0 auto;
   padding: 120px 0;
@@ -18,12 +18,15 @@ main {
   grid-template-columns: repeat(12, 1fr);
 }
 
+html{
+  overflow-x: hidden;
+
+}
+
 h1, h2, h3, blockquote{
   font-weight:800;
   font-style: normal;
-  letter-spacing: 0.005em;
   font-size: 2.5rem; 
-  padding: 72px;
 }
 
 header{
@@ -31,13 +34,15 @@ header{
   grid-column: 2 / span 5;
   font-size: 2.5rem;
   padding: 72px;
-  margin-bottom: var(--spacing);
 }
 
 section {
   grid-column: 2 / 8;
-  padding: 72px;
-  background: var(--dark-bg)
+  padding: 1rem;
+  background: var(--dark-bg);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
 }
 
 blockquote {
@@ -45,5 +50,75 @@ blockquote {
   padding: 0;
   grid-column: 2 / span 9;
   margin-bottom: var(--spacing);
+}
+
+blockquote p {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+}
+
+.top{ 
+  grid-column: 2 / span 5;
+  padding: 72px;
+  margin-bottom: var(--spacing);
+  z-index: -1;
+  background-color: #0d0d0e;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 4px solid black;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px 10px black;
+  opacity: .9
+}
+
+.top:nth-child(even){
+  background-color:white;
+  color: black;
+}
+
+header{
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+.top2{
+  margin-top: 400px;
+  transform: translateX(105%)
+}
+
+.top3{
+  margin-top: 400px;
+}
+
+.top4{
+  margin-top: 200px;
+  transform: translateX(50%);
+}
+
+.top5{
+  margin-top: 200px;
+  transform: translateX(105%);
+}
+
+.intro{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.intro h1{
+  font-size: 58px;
+  width: 100%;
+  margin: 0;
+}
+
+blockquote p{
+  margin: 0;
 }
 
