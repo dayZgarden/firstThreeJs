@@ -2,6 +2,12 @@ import './style.css'
 
 import * as THREE from 'three';
 
+
+// import bumpy from './public/assets/bumpy.jpg'
+// import ghost from './public/assets/ghost.jpg'
+// import moon from './public/assets/moon.jpg'
+
+
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 const scene = new THREE.Scene();
@@ -34,7 +40,7 @@ const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 )
 
 // Needs a material, the wrapping paper for an object
 // in this case no light source is needed because it is a basic material
-const material = new THREE.MeshStandardMaterial( {color: 0xFF6347} );
+const material = new THREE.MeshStandardMaterial( {color: 0xffffff} );
 
 // Combine the geometry with the material
 const torus = new THREE.Mesh( geometry, material );
@@ -86,10 +92,10 @@ function addStar() {
 Array(200).fill().forEach(addStar)
 
 // Load a space texture into the scene, can pass a callback function to notify when the scene is done loading
-const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+// const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 
 // set the background of the scene to this space texture
-scene.background = spaceTexture;
+scene.background = new THREE.TextureLoader().load('space.jpg')
 
 // Make a cube of this picture on every face
 const cubeTexture = new THREE.TextureLoader().load('ghost.jpg');
